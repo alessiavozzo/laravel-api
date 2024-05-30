@@ -1,0 +1,52 @@
+$dash-darkest: #121320;
+$dash-dark: #252935;
+$dash-bg-title: #3536439c;
+$dash-portfolio-light: orange;
+/* #FBB22E */
+$dash-portfolio-dark: rgb(255, 94, 0);
+/* #F58B4B */
+$dash-text-light: white;
+$dash-danger: #EA5656;
+$dash-edit: #52ADE5;
+$dash-edit-dark: #5BA0DF;
+$dash-filter-light: #EA4889;
+$dash-filter-dark: #A658AC;
+
+@mixin d-flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin add-btn {
+    background-image: linear-gradient(to right, $dash-portfolio-light, $dash-portfolio-dark);
+    color: $dash-text-light;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+        background-color: $dash-darkest !important;
+        border: 1px solid $dash-portfolio-light !important;
+        background-image: none;
+    }
+}
+
+@mixin edit-btn {
+
+    background-color: $dash-edit !important;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+        background-color: $dash-edit-dark !important;
+        border: 1px solid $dash-text-light !important;
+    }
+
+}
+
+@mixin delete-btn {
+    background-color: $dash-danger !important;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+        border: 1px solid $dash-text-light !important;
+    }
+}

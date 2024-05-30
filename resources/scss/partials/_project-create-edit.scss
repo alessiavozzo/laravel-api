@@ -1,0 +1,20 @@
+@use "./variables" as *;
+
+.new-project,
+.edit-project {
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+        border-color: $dash-portfolio-dark !important;
+        box-shadow: 0 0 3px 0.5px $dash-portfolio-light !important;
+    }
+
+    .add-btn {
+        @include add-btn;
+    }
+
+    .edit-btn {
+        @include edit-btn;
+    }
+}

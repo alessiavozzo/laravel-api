@@ -1,0 +1,12 @@
+@use "./variables" as *;
+
+#technologies-content {
+    .view-btn {
+        background-image: linear-gradient(to right, $dash-portfolio-light, $dash-portfolio-dark) !important;
+
+        &:hover {
+            border: 1px solid $dash-text-light;
+        }
+    }
+
+}

@@ -1,0 +1,20 @@
+@use "./variables" as *;
+
+#left-sidebar {
+    background-color: $dash-dark;
+
+    li {
+        width: 90%;
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
+
+        &:hover {
+            background-image: linear-gradient(to right, $dash-portfolio-light, $dash-portfolio-dark);
+        }
+    }
+
+    .side-header {
+        height: 60px;
+        background-image: linear-gradient(to right, $dash-portfolio-light, $dash-portfolio-dark);
+    }
+}

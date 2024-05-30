@@ -1,0 +1,71 @@
+@use "./variables" as *;
+
+
+
+#top-bar {
+    background-color: $dash-dark;
+    /* position: fixed;
+        width: 100%; */
+
+    .home-btn {
+        padding: 0.5rem;
+        border-radius: 50%;
+
+        &:hover {
+            background-image: linear-gradient(to right, $dash-portfolio-light, $dash-portfolio-dark);
+        }
+    }
+
+    .logo-sm {
+        height: 60px;
+        background-image: linear-gradient(to right, $dash-portfolio-light, $dash-portfolio-dark);
+        border-radius: 50px;
+    }
+
+    #hamburger-btn {
+        background-image: linear-gradient(to right, #FBB22E, #F58B4B) !important;
+    }
+
+    .dropdown-menu {
+        background-color: $dash-dark;
+        top: 3rem !important;
+
+        a {
+            color: $dash-text-light;
+
+            &:hover {
+                color: $dash-dark;
+            }
+        }
+    }
+
+    .auth {
+        padding: 0.5rem;
+        border-radius: 20px;
+    }
+
+    .login-btn:hover,
+    .register-btn:hover {
+        background-image: linear-gradient(to right, $dash-portfolio-light, $dash-portfolio-dark);
+        border-radius: 50px;
+    }
+
+}
+
+
+@media screen and (min-width:768px) {
+    nav {
+        height: 60px;
+
+        &:has(.dropdown-menu>a:hover) .auth {
+            background-image: linear-gradient(to right, $dash-portfolio-light, $dash-portfolio-dark);
+
+        }
+
+        .auth {
+            &:hover {
+                background-image: linear-gradient(to right, $dash-portfolio-light, $dash-portfolio-dark);
+            }
+        }
+    }
+}

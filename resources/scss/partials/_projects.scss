@@ -1,0 +1,58 @@
+@use "./variables" as *;
+
+.projects-card {
+    background-color: $dash-dark !important;
+
+    .card-header {
+        background-color: $dash-bg-title;
+
+        .add-btn {
+            @include add-btn;
+        }
+    }
+
+    .td-link:hover {
+        color: $dash-portfolio-light !important;
+    }
+
+    .view-btn,
+    .edit-btn,
+    .delete-btn {
+        background-color: $dash-darkest !important;
+        border: 1px solid $dash-text-light !important;
+        color: $dash-text-light !important;
+    }
+
+    .view-btn:hover {
+        background-image: linear-gradient(to right, $dash-portfolio-light, $dash-portfolio-dark);
+    }
+
+    .edit-btn:hover {
+        background-color: $dash-edit;
+    }
+
+    .delete-btn:hover {
+        background-color: $dash-danger !important;
+    }
+
+    select:focus {
+        border-color: $dash-filter-dark !important;
+        box-shadow: 0 0 3px 0.5px $dash-filter-light !important;
+    }
+
+    .filter-btn {
+        background-image: linear-gradient(to right, $dash-filter-light, $dash-filter-dark);
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+            background-color: $dash-darkest !important;
+            border: 1px solid $dash-filter-dark !important;
+            color: $dash-text-light;
+            background-image: none;
+        }
+    }
+}
+
+/* .projects-table> :not(caption)>*>* {
+    background-color: $dash-dark !important;
+} */

@@ -1,0 +1,14 @@
+@use "./variables" as *;
+
+.add-btn {
+    @include add-btn;
+}
+
+input:focus {
+    border-color: $dash-portfolio-dark !important;
+    box-shadow: 0 0 3px 0.5px $dash-portfolio-light !important;
+}
+
+input[type='checkbox']:checked {
+    background-color: $dash-portfolio-light !important;
+}

@@ -1,0 +1,62 @@
+@use "./variables" as *;
+
+#types-content {
+    .card {
+        transition: all 0.3s;
+
+        &:has(.view-btn:hover, .edit-btn:hover, .delete-btn:hover, .confirm-edit-btn:hover) {
+            box-shadow: 0 0 7px 2px $dash-text-light;
+            transform: scale(1.05);
+        }
+    }
+
+    .view-btn,
+    .edit-btn,
+    .delete-btn {
+        background-color: $dash-darkest !important;
+        border: 1px solid $dash-text-light !important;
+        color: $dash-text-light !important;
+    }
+
+    .view-btn:hover {
+        background-image: linear-gradient(to right, $dash-portfolio-light, $dash-portfolio-dark);
+    }
+
+    .edit-btn:hover {
+        background-color: $dash-edit !important;
+    }
+
+    .delete-btn:hover {
+        background-color: $dash-danger !important;
+    }
+
+    .add-btn {
+        @include add-btn;
+    }
+
+    .confirm-edit-btn {
+        background-color: $dash-edit !important;
+
+        &:hover {
+            border: 1px solid $dash-text-light !important;
+            background-color: $dash-edit-dark !important;
+        }
+    }
+
+    .new-type>i {
+        width: 1rem;
+        height: 1rem;
+        padding: 1.5rem;
+        @include d-flex-center;
+        border-radius: 50%;
+        background-color: $dash-darkest !important;
+        border: 1px solid $dash-text-light !important;
+        color: $dash-text-light;
+
+
+        &:hover {
+            background-image: linear-gradient(to right, $dash-portfolio-light, $dash-portfolio-dark);
+        }
+    }
+
+}

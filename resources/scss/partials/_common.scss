@@ -1,0 +1,95 @@
+@use "./variables" as *;
+
+.content-wrapper {
+    /* padding-top: 80px !important; */
+}
+
+.main-admin,
+.guest-page {
+    background-color: $dash-darkest;
+}
+
+.back-btn {
+    background-color: $dash-bg-title;
+    text-decoration: none;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $dash-text-light !important;
+    border: 1px solid $dash-text-light !important;
+    border-radius: 50px;
+    width: 2rem;
+    height: 2rem;
+    transition: width 1s;
+    overflow: hidden;
+    position: relative;
+
+    span {
+        opacity: 0;
+
+        position: absolute;
+    }
+
+    &:hover {
+        width: 6rem;
+        justify-content: start;
+    }
+
+    &:hover span {
+        opacity: 1;
+        margin-left: 1.5rem;
+        transition: opacity 1s;
+    }
+
+}
+
+.pagination {
+
+    @include d-flex-center;
+    padding-top: 1rem;
+    gap: 0.5rem;
+
+    li>.page-link,
+    li>a {
+        background-color: $dash-darkest;
+        border: none;
+        color: $dash-text-light;
+    }
+
+    .page-item>.page-link {
+        border-radius: 50%;
+        width: 1rem;
+        padding: 0.7rem;
+        height: 1rem;
+        @include d-flex-center;
+    }
+
+    .page-item:not(.page-item:first-of-type, .page-item:last-of-type)>.page-link:hover {
+        background-color: $dash-portfolio-dark !important;
+    }
+
+    .page-item.active>.page-link {
+        background-color: $dash-portfolio-dark !important;
+    }
+
+}
+
+nav:has(.pagination) p.small {
+    display: none;
+}
+
+/* scrollbar */
+::-webkit-scrollbar {
+    width: 3px;
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px $dash-bg-title;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: $dash-dark;
+    border-radius: 10px;
+}

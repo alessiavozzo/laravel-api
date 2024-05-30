@@ -1,0 +1,27 @@
+@use "./variables" as *;
+
+.dash-card {
+    @include d-flex-center;
+    padding: 4rem;
+    width: 100%;
+    text-decoration: none;
+    border: 1px solid $dash-text-light;
+    color: $dash-text-light;
+    border-radius: 20px;
+
+    &:hover {
+        box-shadow: 0 0 4px 1px $dash-text-light;
+    }
+}
+
+.proj-card {
+    background-image: linear-gradient(to right, $dash-portfolio-light, $dash-portfolio-dark);
+}
+
+.types-card {
+    background-image: linear-gradient(to right, $dash-edit, $dash-edit-dark);
+}
+
+.tech-card {
+    background-image: linear-gradient(to right, $dash-filter-light, $dash-filter-dark);
+}
