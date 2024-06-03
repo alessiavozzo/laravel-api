@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('github_link');
             /* $table->string('tools')->nullable(); */
             $table->date('creation_date')->nullable();
-            $table->text('description')->nullable();
+            $table->text('description', 300)->nullable();
             $table->boolean('is_favourite')->default(false);
             $table->timestamps();
         });
