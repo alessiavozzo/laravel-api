@@ -177,6 +177,29 @@
                     @enderror
                 </div>
 
+                {{-- is favourite --}}
+                <div class="form-group mb-3">
+                    <label for="is_favourite" class="form-label"><strong>Favourite:</strong></label>
+
+                    <div class="inputs">
+                        <div class="form-check form-check-inline">
+                            <input type="radio" class="form-check-input" name="is_favourite" id="fav_yes"
+                                value="1" {{ old('is_favourite', $project->is_favourite) == 1 ? 'checked' : '' }}>
+                            <label for="fav_yes" class="form-check-label">Yes</label>
+                        </div>
+
+                        <div class="form-check form-check-inline">
+                            <input type="radio" class="form-check-input" name="is_favourite" id="fav_no"
+                                value="0" {{ old('is_favourite', $project->is_favourite) == 0 ? 'checked' : '' }}>
+                            <label for="fav_no" class="form-check-label">No</label>
+                        </div>
+                    </div>
+
+                    @error('is_favourite')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+
                 {{-- description --}}
                 <div class="mb-3">
                     <label for="description"

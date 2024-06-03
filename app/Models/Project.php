@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Project extends Model
 {
     use HasFactory;
-    protected $fillable = ['title', 'slug', 'project_image', /* 'tools' */'preview', 'project_link', 'github_link', 'creation_date', 'description', 'type_id'];
+    protected $fillable = ['title', 'slug', 'project_image', /* 'tools' */'preview', 'project_link', 'github_link', 'creation_date', 'description', 'is_favourite', 'type_id'];
 
     /**
      * Get the user that owns the Project

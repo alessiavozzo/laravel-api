@@ -16,6 +16,14 @@ class ProjectController extends Controller
         ]);
     }
 
+    public function favourites(){
+        $fav_projects = Project::with('type', 'technologies')->where('is_favourite', true)->orderByDesc('id')->paginate(6);
+        return response()->json([
+            'success' => true,
+            'fav_projects' => $fav_projects
+        ]);
+    }
+
     public function show($slug)
     {
         $project = Project::with('type', 'technologies')->where('slug', $slug)->first();

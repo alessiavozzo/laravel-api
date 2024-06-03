@@ -31,6 +31,7 @@ class UpdateProjectRequest extends FormRequest
             'github_link' => 'required',
             'creation_date' => 'nullable',
             'description' => 'nullable',
+            'is_favourite' => 'required|boolean',
             'type_id' => 'nullable|exists:types,id',
             'technologies' => 'exists:technologies,id'
         ];

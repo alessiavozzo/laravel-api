@@ -48,6 +48,7 @@
                                 <th scope="col">GITHUB LINK</th>
                                 <th scope="col">TYPE</th>
                                 <th scope="col">CREATION DATE</th>
+                                <th scope="col">IS FAVOURITE</th>
                                 <th scope="col">ACTIONS</th>
                             </tr>
                         </thead>
@@ -97,6 +98,7 @@
                                     </td>
 
                                     <td>{{ $project->creation_date }}</td>
+                                    <td>{{ $project->is_favourite ? 'Yes' : 'No' }}</td>
                                     <td style="width: 15%">
                                         <a class="btn view-btn" href="{{ route('admin.projects.show', $project) }}">
                                             <i class="fa-solid fa-eye"></i>

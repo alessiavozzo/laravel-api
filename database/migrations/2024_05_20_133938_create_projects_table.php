@@ -22,6 +22,7 @@ return new class extends Migration
             /* $table->string('tools')->nullable(); */
             $table->date('creation_date')->nullable();
             $table->text('description')->nullable();
+            $table->boolean('is_favourite')->default(false);
             $table->timestamps();
         });
     }
