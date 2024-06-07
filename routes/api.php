@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\LeadController;
 use App\Http\Controllers\API\ProjectController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -22,3 +23,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('projects', [ProjectController::class, 'index']);
 Route::get('favourites', [ProjectController::class, 'favourites']);
 Route::get('projects/{slug}', [ProjectController::class, 'show']);
+
+/* rotta in post per i dati ricevuti dal form */
+Route::post('contacts', [LeadController::class, 'store']);

@@ -5,7 +5,9 @@ use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\TypeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\TechnologyController;
+use App\Models\Lead;
 use Illuminate\Support\Facades\Route;
+use App\Mail\NewLeadMessage;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +40,13 @@ Route::middleware(['auth', 'verified'])
         'technologies' => 'technology:slug'
     ]);
 });
+
+Route::get('/mailable', function () {
+
+    $lead = Lead::find(1);
+    return new NewLeadMessage($lead);
+});
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
