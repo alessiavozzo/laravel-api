@@ -145,7 +145,9 @@
                                                             href="#edit-collapse-{{ $technology->id }}-color"
                                                             role="button" aria-expanded="false"
                                                             aria-controls="edit-collapse-{{ $technology->id }}-color">
-                                                            {{ $technology->color }}
+                                                            <div class="color"
+                                                                style="width: 30px; height: 30px; background-color:{{ $technology->color }}">
+                                                            </div>
                                                         </a>
                                                         <div class="collapse w-50"
                                                             id="edit-collapse-{{ $technology->id }}-color">
@@ -153,11 +155,21 @@
                                                             <input type="hidden" name="name"
                                                                 value="{{ $technology->name }}">
 
-                                                            <input type="text"
-                                                                class="form-control mb-2 edit-input {{ session('form-name') === "form-edit-{$technology->id}" && $errors->has('color') ? 'is-invalid' : '' }}"
-                                                                name="color" id="color" aria-describedby="colorHelper"
-                                                                value="{{ session('form-name') === 'form-edit-' . $technology->id ? old('color', $technology->color) : $technology->color }}" />
+                                                            <div class="mb-2">
+                                                                <input type="color"
+                                                                    class="form-control {{ session('form-name') === "form-edit-{$technology->id}" && $errors->has('color') ? 'is-invalid' : '' }}"
+                                                                    name="color" id="color"
+                                                                    aria-describedby="colorHelper"
+                                                                    value="{{ session('form-name') === 'form-edit-' . $technology->id ? old('color', $technology->color) : $technology->color }}" />
 
+                                                                {{-- <input type="hidden" name="form-name" value="form-new" /> --}}
+
+                                                                @if (session('form-name') === "form-edit-{$technology->id}")
+                                                                    @error('color')
+                                                                        <div class="text-danger">{{ $message }}</div>
+                                                                    @enderror
+                                                                @endif
+                                                            </div>
 
                                                             {{-- <input type="hidden" name="form-name"
                                                                 value="form-edit-{{ $technology->id }}" /> --}}
@@ -165,11 +177,7 @@
                                                             <button class="btn edit-btn" type="submit">Edit</button>
                                                         </div>
 
-                                                        @if (session('form-name') === "form-edit-{$technology->id}")
-                                                            @error('color')
-                                                                <div class="text-danger">{{ $message }}</div>
-                                                            @enderror
-                                                        @endif
+
                                                     </div>
 
                                                 </form>
