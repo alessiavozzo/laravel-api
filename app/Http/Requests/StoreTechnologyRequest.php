@@ -26,6 +26,8 @@ class StoreTechnologyRequest extends FormRequest
 
         return [
             'name' => 'required|max:100|unique:technologies',
+            'color' => 'nullable',
+            'image' => 'nullable|image|max:1000'
         ];
     }
 }

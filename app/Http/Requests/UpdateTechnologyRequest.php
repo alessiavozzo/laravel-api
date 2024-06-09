@@ -27,6 +27,8 @@ class UpdateTechnologyRequest extends FormRequest
 
         return [
             'name' => ['required', 'max:100', Rule::unique('technologies')->ignore($this->technology->id)],
+            'color' => 'nullable',
+            'image' => 'nullable|image|max:1000'
         ];
     }
 }
