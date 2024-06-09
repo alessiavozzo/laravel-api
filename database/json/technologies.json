@@ -1,0 +1,62 @@
+[
+    {
+        "name": "HTML",
+        "color": "#E34F26",
+        "image": "html.svg"
+    },
+    {
+        "name": "CSS",
+        "color": "#1572B6",
+        "image": "css.svg"
+    },
+    {
+        "name": "Bootstrap",
+        "color": "#7952B3",
+        "image": "bootstrap.svg"
+    },
+    {
+        "name": "SASS",
+        "color": "#CC6699",
+        "image": "sass.svg"
+    },
+    {
+        "name": "Javascript",
+        "color": "#F7DF1E",
+        "image": "js.svg"
+    },
+    {
+        "name": "Vue.js",
+        "color": "#4FC08D",
+        "image": "vuejs.svg"
+    },
+    {
+        "name": "Vite",
+        "color": "#646CFF",
+        "image": "vite.svg"
+    },
+    {
+        "name": "PHP",
+        "color": "#777BB4",
+        "image": "php.svg"
+    },
+    {
+        "name": "Laravel",
+        "color": "#FF2D20",
+        "image": "laravel.svg"
+    },
+    {
+        "name": "MySQL",
+        "color": "#4479A1",
+        "image": "mysql.svg"
+    },
+    {
+        "name": "npm",
+        "color": "#CB3837",
+        "image": "npm.svg"
+    },
+    {
+        "name": "git",
+        "color": "#F05032",
+        "image": "git.svg"
+    }
+]
