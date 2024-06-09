@@ -6,51 +6,51 @@
         <div class="container-fluid" data-bs-theme="dash-dark">
             <div class="row g-5">
 
-
+                {{-- left --}}
                 <div class="col-12 col-lg-4">
+
+                    {{-- creation form: name, color and possibility to add logo img --}}
+
                     <form data-bs-theme="dash-dark" action="{{ route('admin.technologies.store') }}" method="post"
                         enctype="multipart/form-data">
                         @csrf
 
-                        {{-- name --}}
-                        <div class="mb-2">
-                            <input type="text"
-                                class="form-control {{ session('form-name') === 'form-new' && $errors->has('name') ? 'is-invalid' : '' }}"
-                                name="name" id="name" aria-describedby="nameHelper"
-                                placeholder="New technology name" value="{{ old('name') }}" />
+                        <div class="first-line mb-2 gap-2">
+                            {{-- name --}}
+                            <div class="name">
+                                <input type="text"
+                                    class="form-control {{ session('form-name') === 'form-new' && $errors->has('name') ? 'is-invalid' : '' }}"
+                                    name="name" id="name" aria-describedby="nameHelper"
+                                    placeholder="New technology name" value="{{ old('name') }}" />
 
-                            {{-- <input type="hidden" name="form-name" value="form-new" /> --}}
+                                @if (session('form-name') == 'form-new')
+                                    @error('name')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+                                @endif
+                            </div>
 
-                            @if (session('form-name') == 'form-new')
-                                @error('name')
-                                    <div class="text-danger">{{ $message }}</div>
-                                @enderror
-                            @endif
+                            {{-- color --}}
+                            <div class="color">
+                                <input type="color"
+                                    class="form-control h-100 {{ session('form-name') === 'form-new' && $errors->has('color') ? 'is-invalid' : '' }}"
+                                    name="color" id="color" aria-describedby="colorHelper"
+                                    value="{{ old('color', '#FFFFFF') }}" />
+
+                                @if (session('form-name') == 'form-new')
+                                    @error('color')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+                                @endif
+                            </div>
                         </div>
 
-                        {{-- color --}}
-                        <div class="mb-2">
-                            <input type="color"
-                                class="form-control {{ session('form-name') === 'form-new' && $errors->has('color') ? 'is-invalid' : '' }}"
-                                name="color" id="color" aria-describedby="colorHelper"
-                                value="{{ old('color', '#FFFFFF') }}" />
-
-                            {{-- <input type="hidden" name="form-name" value="form-new" /> --}}
-
-                            @if (session('form-name') == 'form-new')
-                                @error('color')
-                                    <div class="text-danger">{{ $message }}</div>
-                                @enderror
-                            @endif
-                        </div>
 
                         {{-- image --}}
                         <div class="mb-2">
                             <input type="file"
                                 class="form-control {{ session('form-name') === 'form-new' && $errors->has('image') ? 'is-invalid' : '' }}"
                                 name="image" id="image" aria-describedby="imageHelper" value="{{ old('image') }}" />
-
-                            {{-- <input type="hidden" name="form-name" value="form-new" /> --}}
 
                             @if (session('form-name') == 'form-new')
                                 @error('image')
@@ -63,11 +63,9 @@
 
                     </form>
 
-                    {{-- @dd(session()->all())
-                    @dd(session('form-name')) --}}
-
                 </div>
 
+                {{-- right --}}
                 <div class="col-12 col-lg-8 tech-table">
                     <div class="card p-4">
                         @include('admin.partials.session-messages')
@@ -85,16 +83,16 @@
                                 </thead>
                                 <tbody>
 
-                                    @forelse ($technologies as $key=>$technology)
+                                    @forelse ($technologies as $technology)
                                         <tr class="align-middle">
                                             <td>
+                                                {{-- form to edit NAME --}}
                                                 <form data-bs-theme="dash-dark"
                                                     action="{{ route('admin.technologies.update', $technology) }}"
                                                     method="post">
                                                     @csrf
                                                     @method('PATCH')
 
-                                                    {{-- name --}}
                                                     <div class="">
                                                         <a class="btn" data-bs-toggle="collapse"
                                                             href="#edit-collapse-{{ $technology->id }}" role="button"
@@ -110,10 +108,6 @@
                                                                 name="name" id="name" aria-describedby="nameHelper"
                                                                 value="{{ session('form-name') === 'form-edit-' . $technology->id ? old('name', $technology->name) : $technology->name }}" />
 
-
-                                                            {{-- <input type="hidden" name="form-name"
-                                                                value="form-edit-{{ $technology->id }}" /> --}}
-
                                                             <button class="btn edit-btn" type="submit">Edit</button>
                                                         </div>
 
@@ -128,25 +122,24 @@
 
                                             </td>
 
-                                            {{-- <td scope="row">{{ $technology->name }}</td> --}}
-
+                                            {{-- slug in autogenerated in technology controller --}}
                                             <td>{{ $technology->slug }}</td>
 
                                             <td>
+                                                {{-- form to edit COLOR --}}
                                                 <form data-bs-theme="dash-dark"
                                                     action="{{ route('admin.technologies.update', $technology) }}"
                                                     method="post">
                                                     @csrf
                                                     @method('PATCH')
 
-                                                    {{-- color --}}
                                                     <div class="">
                                                         <a class="btn" data-bs-toggle="collapse"
                                                             href="#edit-collapse-{{ $technology->id }}-color"
                                                             role="button" aria-expanded="false"
                                                             aria-controls="edit-collapse-{{ $technology->id }}-color">
-                                                            <div class="color"
-                                                                style="width: 30px; height: 30px; background-color:{{ $technology->color }}">
+                                                            <div class="color-preview"
+                                                                style="background-color:{{ $technology->color }}">
                                                             </div>
                                                         </a>
                                                         <div class="collapse w-50"
@@ -162,17 +155,12 @@
                                                                     aria-describedby="colorHelper"
                                                                     value="{{ session('form-name') === 'form-edit-' . $technology->id ? old('color', $technology->color) : $technology->color }}" />
 
-                                                                {{-- <input type="hidden" name="form-name" value="form-new" /> --}}
-
                                                                 @if (session('form-name') === "form-edit-{$technology->id}")
                                                                     @error('color')
                                                                         <div class="text-danger">{{ $message }}</div>
                                                                     @enderror
                                                                 @endif
                                                             </div>
-
-                                                            {{-- <input type="hidden" name="form-name"
-                                                                value="form-edit-{{ $technology->id }}" /> --}}
 
                                                             <button class="btn edit-btn" type="submit">Edit</button>
                                                         </div>
@@ -184,13 +172,13 @@
                                             </td>
 
                                             <td>
+                                                {{-- form to edit IMAGE --}}
                                                 <form data-bs-theme="dash-dark"
                                                     action="{{ route('admin.technologies.update', $technology) }}"
                                                     method="post" enctype="multipart/form-data">
                                                     @csrf
                                                     @method('PATCH')
 
-                                                    {{-- image --}}
                                                     {{--  @dd($technology->image) --}}
                                                     {{-- @dd(Storage::exists($technology->image)) --}}
                                                     <div class="">
@@ -200,13 +188,12 @@
                                                             aria-controls="edit-collapse-{{ $technology->id }}-image">
                                                             @if ($technology->image)
                                                                 <div class="old-image">
+                                                                    {{-- if img exists in storage, render img, else if img exists in public/img,render img --}}
                                                                     @if (Storage::exists($technology->image))
-                                                                        <img width="150"
-                                                                            src="{{ Storage::disk('local')->url($technology->image) }}"
+                                                                        <img src="{{ Storage::disk('local')->url($technology->image) }}"
                                                                             alt="{{ $technology->name }}">
                                                                     @else
-                                                                        <img width="150"
-                                                                            src="{{ asset($technology->image) }}"
+                                                                        <img src="{{ asset($technology->image) }}"
                                                                             alt="{{ $technology->name }}">
                                                                     @endif
                                                                 </div>
@@ -229,9 +216,6 @@
                                                                 @enderror
                                                             @endif
 
-                                                            {{-- <input type="hidden" name="form-name"
-                                                                value="form-edit-{{ $technology->id }}" /> --}}
-
                                                             <button class="btn edit-btn" type="submit">Edit</button>
                                                         </div>
 
@@ -241,15 +225,15 @@
                                             </td>
 
                                             <td>
+                                                {{-- show project with that technology + count them --}}
                                                 <a href="{{ route('admin.technologies.show', $technology) }}"
                                                     class="btn view-btn text-white">View
                                                     projects ({{ $technology->projects()->count() }})</a>
 
                                             </td>
 
-
+                                            {{-- delete --}}
                                             <td style="width: 15%">
-                                                {{-- @include('admin.partials.project-delete') --}}
                                                 <button technology="button" class="btn delete-btn" data-bs-toggle="modal"
                                                     data-bs-target="#modalId-{{ $technology->id }}">
                                                     <i class="fa-solid fa-trash"></i>
@@ -260,7 +244,6 @@
                                         </tr>
 
                                     @empty
-
                                         <tr class="">
                                             <td scope="row" colspan="6">No projects found</td>
                                         </tr>
@@ -277,50 +260,6 @@
                 </div>
 
             </div>
-
-            {{-- <a class="text-decoration-none d-flex justify-content-end my-4 new-type"
-                href="{{ route('admin.technologies.create') }}">
-                <i class="fa-solid fa-plus"></i>
-            </a>
- --}}
-
-
-
-            {{-- @include('admin.partials.session-messages') --}}
-
-            {{-- <div class="row row-cols-sm-1 row-cols-md-3 gy-3">
-                @forelse ($technologies as $technology)
-                    <div class="col">
-                        <div class="card" style="border-color:{{ $technology->color }}">
-                            <div class="card-header text-center fw-bold">
-                                {{ $technology->name }}
-                            </div>
-                            <div class="card-body text-center">
-                                
-                                <a href="{{ route('admin.technologies.show', $technology) }}"
-                                    class="btn view-btn text-white">View
-                                    projects</a>
-                                <a href="{{ route('admin.technologies.edit', $technology) }}" class="btn edit-btn">Edit</a>
-
-                                <button technology="button" class="btn delete-btn" data-bs-toggle="modal"
-                                    data-bs-target="#modalId-{{ $technology->id }}">
-                                    Delete
-                                </button>
-                                <x-delete-modal :id="$technology->id" :name="$technology->name" :route="route('admin.technologies.destroy', $technology)" />
-
-
-
-                            </div>
-                        </div>
-                    </div>
-                @empty
-                    <div class="col">
-                        <p>No technologies defined</p>
-                    </div>
-                @endforelse
-            </div> --}}
-
-
 
         </div>
     </section>

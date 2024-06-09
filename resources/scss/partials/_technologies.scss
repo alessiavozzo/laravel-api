@@ -13,4 +13,32 @@
         margin-bottom: 3rem;
     }
 
+    .first-line {
+        display: flex;
+
+        .name {
+            width: calc((100% / 12) * 10);
+        }
+
+        .color {
+            width: calc((100% / 12) * 2);
+        }
+    }
+
+    .color-preview {
+        width: 30px;
+        height: 30px;
+        border: 1px solid $dash-text-light;
+    }
+
+    .old-image {
+        width: 50px;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    }
+
 }
