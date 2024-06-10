@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\API\LeadController;
 use App\Http\Controllers\API\ProjectController;
+use App\Http\Controllers\API\TechnologyController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -22,6 +23,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('projects', [ProjectController::class, 'index']);
 Route::get('favourites', [ProjectController::class, 'favourites']);
+Route::get('technologies', [TechnologyController::class, 'index']);
 Route::get('projects/{slug}', [ProjectController::class, 'show']);
 
 /* rotta in post per i dati ricevuti dal form */
